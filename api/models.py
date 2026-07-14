@@ -27,7 +27,7 @@ class Habit(models.Model):
     category = models.ManyToManyField(Category, related_name='habit')
     
     def __str__(self):
-        return f"{self.user.username} has {self.habit_name} at {self.created_date}"
+        return f"{self.user.username}'s habit is {self.habit_name} (created at {self.created_date})"
     
 
 
@@ -45,5 +45,4 @@ class Checkin(models.Model):
     
     def __str__(self):
         return f"{self.habit.user.username} checked in at {self.date}"
-    
     
