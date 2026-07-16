@@ -19,7 +19,6 @@ class Habit(models.Model):
         ('daily', 'Daily'),
         ('weekly', 'Weekly'),
     ]
-    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     habit_name = models.CharField(max_length=50)
     frequency = models.CharField(max_length=10, choices=FREQUENCY_CHOICES, default='daily')

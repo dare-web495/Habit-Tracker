@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Habit, Category, User, Checkin
-from .serializers import UserSerializer, CheckinSerializer, HabitSerializer, CategorySerializer
+from .models import Habit, Category, Checkin
+from .serializers import CheckinSerializer, HabitSerializer, CategorySerializer
+
 
 # Create your views here.
 class HabitViewSet(viewsets.ModelViewSet):
@@ -12,11 +12,6 @@ class HabitViewSet(viewsets.ModelViewSet):
 class CheckinViewset(viewsets.ModelViewSet):
     queryset = Checkin.objects.all()
     serializer_class = CheckinSerializer
-
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
