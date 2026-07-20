@@ -1,11 +1,16 @@
 from rest_framework import serializers
+from django.contrib.auth.password_validation import validate_password
 from .models import Checkin, Habit, User, Category
 
 
-class UserSerializer(serializers.ModelSerializer):
+class RegisterUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name']
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True, 'validators': [validate_password]}}
+        
+    def create(self, validate_data):
+        return User.objects.create_user(**validate_data)
 
 
 class CategorySerializer(serializers.ModelSerializer):

@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Habit, Category, Checkin
-from .serializers import CheckinSerializer, HabitSerializer, CategorySerializer
+from .serializers import CheckinSerializer, HabitSerializer, CategorySerializer, RegisterUserSerializer
 
 
 # Create your views here.
@@ -28,3 +28,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Category.objects.filter(self.request.user)
+
+
+class RegisterUserViewSet(generics.APIView):
+    pass
