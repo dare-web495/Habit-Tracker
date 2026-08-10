@@ -14,6 +14,7 @@ router.register(r'checkin', views.CheckinViewset, basename='checkin')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api/token/', TokenObtainPairView.as_view(), name='token'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    path('token/', TokenObtainPairView.as_view(), name='token'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('register/', views.RegisterUserView.as_view(), name='register')
 ]

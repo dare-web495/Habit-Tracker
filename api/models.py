@@ -9,13 +9,14 @@ class User(AbstractUser):
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.name
 
 
 class Habit(models.Model):
-    FREQUENCY_CHOICES = [
+    FREQUENCY_CHOICES = [  
         ('daily', 'Daily'),
         ('weekly', 'Weekly'),
     ]
@@ -41,6 +42,10 @@ class Checkin(models.Model):
                 name='prevent_double_checkin'
             )
         ]
+        
+    @property
+    def user(self):
+        return self.habit.user
     
     def __str__(self):
         return f"{self.habit.user.username} checked in at {self.date}"

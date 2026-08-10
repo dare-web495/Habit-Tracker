@@ -26,7 +26,7 @@ class CheckinSerializer(serializers.ModelSerializer):
 
 
 class HabitSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
+    user = RegisterUserSerializer(read_only=True)
     category = CategorySerializer(many=True, read_only=True)
     checkin_set = CheckinSerializer(many=True, read_only=True)
     
